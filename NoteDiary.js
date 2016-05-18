@@ -18,7 +18,13 @@ function NotesApplication (author, notes_array) {
 	};
 	
 	this.get = function (note_id) {
-	    return notes_array[note_id] + "\n"
+		var is_valid = valid_note(note_id)
+		if (is_valid === true) {
+			return notes_array[note_id] + "\n"
+		} else {
+			return is_valid
+		}
+	    
 	};
 	
 	this.search = function (search_text) {
@@ -40,11 +46,36 @@ function NotesApplication (author, notes_array) {
 	};
 	
 	this.delete = function (note_id) {
-		notes_array.splice(note_id, 1)
-		return "The note has been deleted!"
+		var is_valid = valid_note(note_id)
+		if (is_valid === true) {
+			notes_array.splice(note_id, 1)
+			return "The note has been deleted!";
+		} else {
+			return is_valid;
+		}
+		
 	};
 	
 	this.edit = function (note_id, new_content) {
-		notes_array.splice(note_id, 1, new_content)
+		var is_valid = valid_note(note_id)
+		if (is_valid === true) {
+			notes_array.splice(note_id, 1, new_content)
+			return "The note has been edited.\n" + notes_array[note_id] + "\n";
+		} else {
+			return is_valid;
+		}
 	};
+	
+	valid_note = function(note_id) {
+		if ( Number.isInteger(note_id) ) {
+			if (notes_array[note_id] !== undefined) {
+				return true;
+			} else {
+				return "Note id does not exist in the array. Please try again.\n"
+			}
+			
+		} else {
+			return "Note id has to be an integer. Please check the note id.\n"
+		}
+	}
 }
