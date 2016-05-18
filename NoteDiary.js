@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+<script>
+
+
 function NoteApplication (author) {
 	this.author = author;
 	this.notes_array = new Array;
@@ -5,8 +15,9 @@ function NoteApplication (author) {
 // Adds new note content
 	this.create = function (note_content) {};
 // Lists all the notes that have been stored in the array	
-	this.listNotes = function() {};
+	this.listNotes = function(){}
 	    this.note_content = function() {};
+	}
 	    
 
 };	this.get = function (note_id) {
@@ -22,12 +33,15 @@ function NoteApplication (author) {
     		return "index number" + note_id +"was deleted";
     	}
     	else {
-    		return this.validate(note_id, " to delete")
+    		return this.validate(note_id, 'to delete');
     	}
-    };
+    }
     this.edit = function (note_id, new_content){
     	if (this.validate(note_id) ==true) {
     		this.notes_array[note_id] = change_made;
-    		return "index number" + note_id "was edited";
+    		return "index number" + note_id + "was edited";
     	}
     };
+</script>
+</body>
+</html>
