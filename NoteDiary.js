@@ -1,4 +1,3 @@
-
 function NotesApplication (author, notes_array) {
 	this.author = author;
 	this.notes_array = [];
